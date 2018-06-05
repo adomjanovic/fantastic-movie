@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'lab/style.css' %}" />
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-white fixed-top bg-white">
+		<div class="float-left">
+			<a href="{% url 'movies' %}"><img src="{% static "App1/logo.png" %}" alt="fantastic movie"/></a>
+		</div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					{% if user.is_authenticated %}
+					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+					<li class="nav-item">
+							<a class="nav-link" href="{% url 'changePassword' %}">Change password</a>
+					</li>
+					{% else %}
+					<a class="nav-link" href="{% url 'login' %}">Login</a>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'registration' %}">Registration</a>
+					</li>
+					{% endif %}
+				</li>
+				<li class="nav-item">
+				{% if request.user.is_staff %}
+						<a class="nav-link" href="{% url 'searchMovie' %}">Advanced search</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'newMovie' %}">Add new movie</a>
+				</li>
+				{% endif %}
+			</ul>
+			<form class="form-inline mt-2 mt-md-0" action="{% url 'movies' %}" method="GET">
+				<input type="text" id="ajax-input" name="q" value='{{ request.GET.q }}' class="form-control mr-md-4"  placeholder="Search by criteria">
+				<button id="ajax-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+	<div class="container">
+		<br> <br>
+	{% block content %}
+
+	{% endblock %}
+	
+	<footer></footer>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</body>
+</html>

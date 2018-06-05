@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  <br><br><hr>
+    <h3>Search for movie/s: </h3> 
+        <form action="{% url 'searchMovie' %}" method="GET">
+            <div class="row">
+                <div class="col">
+                    <label for="id_title">Title:</label>
+                    <input type="text" name="title" maxlength="100" class="form-control"  id="id_title" />    
+                </div>
+                <div class="col">
+                    <label for="id_release_date">Released before this date:</label>
+                    <input type="date" name="release_date_before" class="form-control"  id="id_release_date_before" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="id_release_date">Released after this date:</label>
+                    <input type="date" name="release_date_after" class="form-control"  id="id_release_date_after" />
+                </div>
+                <div class="col">
+                    <label for="id_budget">Budget (minimum):</label>
+                    <input type="number" name="budget" class="form-control" min="1000" step="1000"   id="id_budget" />
+                </div>
+                <div class="col">
+                    <label for="id_revenue">Box office (minimum):</label>
+                    <input type="number" name="revenue" class="form-control" min="1000" step="1000"  id="id_revenue" />    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="id_runtime">Runtime (max):</label>
+                    <input type="number" name="runtime" class="form-control" min="1" step="10"  id="id_runtime_min" />    
+                </div>
+                <div class="col">
+                    <label for="id_vote_average">Lowest rating:</label>
+                    <input type="number" name="vote_average_min" step="0.5" max="10" min="1" class="form-control"  id="id_vote_average_min" />
+                </div>
+                <div class="col">
+                    <label for="id_vote_average">Highest rating:</label>
+                    <input type="number" name="vote_average_max" step="0.5" max="10" min="1" class="form-control"  id="id_vote_average_max" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="director">Director: </label>
+                    <input type="text" name="director" maxlength="100" class="form-control"  id="id_director" />    
+                </div>
+                <div class="col">
+                    <label for="actors">Actor: </label>
+                    <input type="text" name="actors" maxlength="100" class="form-control"  id="id_actor" />    
+                </div>
+                <div class="col">
+                    <label for="genres">Genre: </label>
+                    <input type="text" name="genres" maxlength="100" class="form-control"  id="id_genre" />    
+                </div>
+            </div>
+            <br><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+{% endblock %}

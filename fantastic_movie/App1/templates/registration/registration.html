@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br><br>
+    <div class="row"> 
+        <div class="col"></div>
+        <div class="col">
+            <form class="form-signin" method="post">
+                {% csrf_token %}
+                <label for="id_username">Username:</label> <input class="form-control"  type="text" name="username" maxlength="150" autofocus required id="id_username" /> 
+                <label for="id_password1">Password:</label> <input class="form-control"  type="password" name="password1" required id="id_password1" />
+                <label for="id_password2">Password confirmation:</label> <input class="form-control"  type="password" name="password2" required id="id_password2" /> <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sing up</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

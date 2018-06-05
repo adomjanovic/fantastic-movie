@@ -1,0 +1,28 @@
++ skripta za spremanje filmova u bazu
++ napravit bazu filmova sa svojim parametrima(detalji, box office, naslov, redatelj...)
++ povezati u relacije (film - redatelj - glumci - zanr - korisnik ?) i staviti ogranicenja kod brisanja itd
++ omoguciti prikaz svih filmova link na film
++ prikaz jednog filma sa svim detaljima
++ napravit stranice za dodavanje i editiranje filmova
++ stilizirati, CSS i bootstrap koristit
++ napravit logo, stavit u static mapu
++ pretraga filmova po kljucnoj rijeci (ILI)
++ filtriranje filmova po kriterijima (AND)
++ dodati paginaciju
++ opciju za prijavu, odjavu i mijenjanje lozinke
++ dodati razlicite uloge za korisnike (admin, korisnik i zaposlenik (staff))
++ dodati provjere prava pristupa na rutu
++ napravit registracijsku formu(postoji registration forma u auth paketu ili napraviti svoju custom formu)
+
+
+API: 0b2c4ff39ce70fc79faf50910fc75d54
+link za poster: http://image.tmdb.org/t/p/w185/adw6Lq9FiC9zjYEpOqfq03ituwp.jpg
+dokum: https://developers.themoviedb.org/3/getting-started/images
+
+https://api.themoviedb.org/3/movie/top_rated?api_key=0b2c4ff39ce70fc79faf50910fc75d54&language=en-US&page=1
+
+osoba: https://api.themoviedb.org/3/person/7467?api_key=0b2c4ff39ce70fc79faf50910fc75d54
+film: https://api.themoviedb.org/3/movie/550?api_key=0b2c4ff39ce70fc79faf50910fc75d54&language=en-US
+
+
+primjer_dodavanje: /adw6Lq9FiC9zjYEpOqfq03ituwp.jpg

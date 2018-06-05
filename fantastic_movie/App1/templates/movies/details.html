@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+    {% for movie in movie %}
+        <div class="row">
+            <div class="col-md-4">
+                <h4>{{ movie.title|title }}</h4>
+                <p class="lead">Director: {{ movie.director.name }}</p>
+                <p>Runtime: {{ movie.runtime }} min </p>
+                <p>Release date: {{ movie.release_date }} </p>
+                <p>Budget: {{ movie.budget }} $</p>
+                <p>Revenue: {{ movie.revenue }} $</p>
+                <p>Rating: {{ movie.vote_average }} Votes: {{ movie.vote_count }}</p>
+                {% if request.user.is_superuser %}
+                    <a class="btn btn-danger btn-lg" href="/movies/delete/{{ movie.id}}" role="button">Delete</a>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.is_staff %}
+                    <a class="btn btn-primary btn-lg" href="/movies/edit/{{ movie.id}}" role="button">Edit</a>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <p><b>Genres:</b> {% for item in  movie.genres.all %}
+                            {{ item.name }},
+                            {% endfor %}</p>
+                    
+                <p><b>Stars:</b> {% for item in  movie.actors.all %}
+                            {{ item.name }},
+                        {% endfor %}</p>
+                <p>{{ movie.overview|title }}</p>                        
+            </div>
+            <div class="col-md-4">
+                <div class="float-right">
+                    <img src="http://image.tmdb.org/t/p/w185{{ movie.poster_path }}" alt="">
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+    {% if request.user.is_superuser %}
+        <a class="btn btn-info"  href="{% url 'newMovie' %}">Add new film!</a>
+    {% endif %}
+
+{% endblock %}
